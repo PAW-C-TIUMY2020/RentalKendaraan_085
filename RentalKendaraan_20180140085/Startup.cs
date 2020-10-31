@@ -56,7 +56,7 @@ namespace RentalKendaraan_20180140085
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Peminjamen}/{action=Index}/{id?}");
             });
         }
     }
