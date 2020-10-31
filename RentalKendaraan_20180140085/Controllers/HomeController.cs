@@ -34,6 +34,11 @@ namespace RentalKendaraan_20180140085.Controllers
             return View();
         }
 
+        public IActionResult DaftarRental()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
