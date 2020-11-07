@@ -60,7 +60,7 @@ namespace RentalKendaraan_20180140085.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                    _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
