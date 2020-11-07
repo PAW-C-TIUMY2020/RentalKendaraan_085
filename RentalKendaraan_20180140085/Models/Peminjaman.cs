@@ -14,22 +14,23 @@ namespace RentalKendaraan_20180140085.Models
         }
 
         [DisplayName("Tanggal Peminjaman")]
-        public DateTime? TglPeminjaman { get; set; }
+        public DateTime TglPeminjaman { get; set; }
         [Column(TypeName ="varchar(20)")]
         [DisplayName("Kendaraan")]
-        public int? IdKendaraan { get; set; }
+        public int IdKendaraan { get; set; }
         [Column(TypeName = "varchar(50)")]
         [DisplayName("Customer")]
-        public int? IdCustomer { get; set; }
+        public int IdCustomer { get; set; }
         [Column(TypeName = "varchar(15)")]
         [DisplayName("Jaminan")]
-        public int? IdJaminan { get; set; }
+        public int IdJaminan { get; set; }
         [Column(TypeName = "int")]
-        public int? Biaya { get; set; }
+        public int Biaya { get; set; }
 
         public Jaminan IdJaminanNavigation { get; set; }
         public Kendaraan IdKendaraanNavigation { get; set; }
         public Customer IdPeminjamanNavigation { get; set; }
         public ICollection<Pengembalian> Pengembalian { get; set; }
+        public int? IdPeminjaman { get; internal set; }
     }
 }

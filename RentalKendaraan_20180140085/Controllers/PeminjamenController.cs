@@ -131,6 +131,11 @@ namespace RentalKendaraan_20180140085.Controllers
             return View(peminjaman);
         }
 
+        private bool PeminjamanExists(int? idPeminjaman)
+        {
+            throw new NotImplementedException();
+        }
+
         // GET: Peminjamen/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
