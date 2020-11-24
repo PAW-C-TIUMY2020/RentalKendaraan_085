@@ -21,8 +21,8 @@ namespace RentalKendaraan_20180140085.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            var rentKendaraanContext = _context.Customer.Include(c => c.IdCustomerNavigation);
-            return View(await rentKendaraanContext.ToListAsync());
+            //var rentKendaraanContext = _context.Customer.Include(c => c.IdCustomerNavigation);
+            return View(await _context.Customer.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -34,7 +34,7 @@ namespace RentalKendaraan_20180140085.Controllers
             }
 
             var customer = await _context.Customer
-                .Include(c => c.IdCustomerNavigation)
+                //.Include(c => c.IdCustomerNavigation)
                 .FirstOrDefaultAsync(m => m.IdCustomer == id);
             if (customer == null)
             {
@@ -47,7 +47,7 @@ namespace RentalKendaraan_20180140085.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
-            ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender");
+            //ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace RentalKendaraan_20180140085.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
+            //ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
             return View(customer);
         }
 
@@ -81,7 +81,7 @@ namespace RentalKendaraan_20180140085.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
+            //ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
             return View(customer);
         }
 
@@ -117,7 +117,7 @@ namespace RentalKendaraan_20180140085.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
+            //ViewData["IdCustomer"] = new SelectList(_context.Gender, "IdGender", "IdGender", customer.IdCustomer);
             return View(customer);
         }
 
@@ -130,7 +130,7 @@ namespace RentalKendaraan_20180140085.Controllers
             }
 
             var customer = await _context.Customer
-                .Include(c => c.IdCustomerNavigation)
+                //.Include(c => c.IdCustomerNavigation)
                 .FirstOrDefaultAsync(m => m.IdCustomer == id);
             if (customer == null)
             {

@@ -8,6 +8,6 @@ namespace RentalKendaraan_20180140085.Models
         public int IdGender { get; set; }
         public string NamaGender { get; set; }
 
-        public Customer Customer { get; set; }
+        //public Customer Customer { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace RentalKendaraan_20180140085.Models
                 //string, you should move it out of source code.See
                 //http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storingconnection strings.
 
-                optionsBuilder.UseSqlServer("Server=DESKTOP-KT69I3S;Database=RentKendaraan;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-KT69I3S;Database=RentalKendaraan;Trusted_Connection=True;");
             }
         }
 
@@ -67,11 +67,11 @@ namespace RentalKendaraan_20180140085.Models
                     .HasMaxLength(13)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdCustomerNavigation)
-                    .WithOne(p => p.Customer)
-                    .HasForeignKey<Customer>(d => d.IdCustomer)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Customer_Gender");
+            //    entity.HasOne(d => d.IdCustomerNavigation)
+            //        .WithOne(p => p.Customer)
+               //     .HasForeignKey<Customer>(d => d.IdCustomer)
+               //     .OnDelete(DeleteBehavior.ClientSetNull)
+               //     .HasConstraintName("FK_Customer_Gender");
             });
 
             modelBuilder.Entity<Gender>(entity =>
@@ -139,10 +139,10 @@ namespace RentalKendaraan_20180140085.Models
                     .HasMaxLength(8)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdJenisKendaraanNavigation)
-                    .WithMany(p => p.Kendaraan)
-                    .HasForeignKey(d => d.IdJenisKendaraan)
-                    .HasConstraintName("FK_Kendaraan_Jenis_Kendaraan");
+             //   entity.HasOne(d => d.IdJenisKendaraanNavigation)
+               //     .WithMany(p => p.Kendaraan)
+               //     .HasForeignKey(d => d.IdJenisKendaraan)
+               //     .HasConstraintName("FK_Kendaraan_Jenis_Kendaraan");
             });
 
             modelBuilder.Entity<KondisiKendaraan>(entity =>
@@ -177,21 +177,21 @@ namespace RentalKendaraan_20180140085.Models
                     .HasColumnName("Tgl_Peminjaman")
                     .HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdJaminanNavigation)
-                    .WithMany(p => p.Peminjaman)
-                    .HasForeignKey(d => d.IdJaminan)
-                    .HasConstraintName("FK_Peminjaman_Jaminan");
+                //entity.HasOne(d => d.IdJaminanNavigation)
+                  //  .WithMany(p => p.Peminjaman)
+                    //.HasForeignKey(d => d.IdJaminan)
+                    //.HasConstraintName("FK_Peminjaman_Jaminan");
 
-                entity.HasOne(d => d.IdKendaraanNavigation)
-                    .WithMany(p => p.Peminjaman)
-                    .HasForeignKey(d => d.IdKendaraan)
-                    .HasConstraintName("FK_Peminjaman_Kendaraan");
+                //entity.HasOne(d => d.IdKendaraanNavigation)
+                  //  .WithMany(p => p.Peminjaman)
+                   // .HasForeignKey(d => d.IdKendaraan)
+                    //.HasConstraintName("FK_Peminjaman_Kendaraan");
 
-                entity.HasOne(d => d.IdPeminjamanNavigation)
-                    .WithOne(p => p.Peminjaman)
-                    .HasForeignKey<Peminjaman>(d => d.IdPeminjaman)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Peminjaman_Customer");
+                //entity.HasOne(d => d.IdPeminjamanNavigation)
+                  //  .WithOne(p => p.Peminjaman)
+                    //.HasForeignKey<Peminjaman>(d => d.IdPeminjaman)
+                    //.OnDelete(DeleteBehavior.ClientSetNull)
+                    //.HasConstraintName("FK_Peminjaman_Customer");
             });
 
             modelBuilder.Entity<Pengembalian>(entity =>
@@ -208,15 +208,15 @@ namespace RentalKendaraan_20180140085.Models
                     .HasColumnName("Tgl_Pengembalian")
                     .HasColumnType("datetime");
 
-                entity.HasOne(d => d.IdKondisiNavigation)
-                    .WithMany(p => p.Pengembalian)
-                    .HasForeignKey(d => d.IdKondisi)
-                    .HasConstraintName("FK_Pengembalian_Kondisi_Kendaraan");
+               // entity.HasOne(d => d.IdKondisiNavigation)
+                //    .WithMany(p => p.Pengembalian)
+                 //   .HasForeignKey(d => d.IdKondisi)
+                 //   .HasConstraintName("FK_Pengembalian_Kondisi_Kendaraan");
 
-                entity.HasOne(d => d.IdPeminjamanNavigation)
-                    .WithMany(p => p.Pengembalian)
-                    .HasForeignKey(d => d.IdPeminjaman)
-                    .HasConstraintName("FK_Pengembalian_Peminjaman");
+              //  entity.HasOne(d => d.IdPeminjamanNavigation)
+                 //   .WithMany(p => p.Pengembalian)
+                //    .HasForeignKey(d => d.IdPeminjaman)
+                 //   .HasConstraintName("FK_Pengembalian_Peminjaman");
             });
         }
     }

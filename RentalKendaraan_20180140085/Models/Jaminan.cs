@@ -5,10 +5,10 @@ namespace RentalKendaraan_20180140085.Models
 {
     public partial class Jaminan
     {
-        public Jaminan()
-        {
-            Peminjaman = new HashSet<Peminjaman>();
-        }
+        //public Jaminan()
+        //{
+        //    Peminjaman = new HashSet<Peminjaman>();
+       // }
 
         public int IdJaminan { get; set; }
         public string NamaJaminan { get; set; }

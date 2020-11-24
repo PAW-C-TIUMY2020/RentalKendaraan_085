@@ -5,10 +5,10 @@ namespace RentalKendaraan_20180140085.Models
 {
     public partial class Kendaraan
     {
-        public Kendaraan()
-        {
-            Peminjaman = new HashSet<Peminjaman>();
-        }
+        //public Kendaraan()
+        //{
+           // Peminjaman = new HashSet<Peminjaman>();
+        //}
 
         public int IdKendaraan { get; set; }
         public string NamaKendaraan { get; set; }
