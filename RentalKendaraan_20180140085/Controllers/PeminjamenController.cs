@@ -19,7 +19,7 @@ namespace RentalKendaraan_20180140085.Controllers
         }
 
         // GET: Peminjamen
-        public async Task<IActionResult> Index(string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             var rentKendaraanContext = _context.Peminjaman.Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation).Include(p => p.IdPeminjamanNavigation);
 
@@ -36,6 +36,21 @@ namespace RentalKendaraan_20180140085.Controllers
 
             //panggil db context
             var menu = from m in _context.Peminjaman.Include(p => p.IdCustomerNavigation).Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation) select m;
+
+            //membuat pagedList
+            ViewData["CurrentSort"] = sortOrder;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFile"] = searchString;
 
             return View(await rentKendaraanContext.ToListAsync());
         }
