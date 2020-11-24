@@ -21,7 +21,7 @@ namespace RentalKendaraan_20180140085.Controllers
         // GET: Peminjamen
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            var rentKendaraanContext = _context.Peminjaman.Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation).Include(p => p.IdPeminjamanNavigation);
+            //var rentKendaraanContext = _context.Peminjaman.Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation).Include(p => p.IdPeminjamanNavigation);
 
             //buat list menyimpan ketersediaan
             var ktsdList = new List<string>();
@@ -40,6 +40,9 @@ namespace RentalKendaraan_20180140085.Controllers
             //membuat pagedList
             ViewData["CurrentSort"] = sortOrder;
 
+            //definisi jumlah data pada halaman
+            int pageSize = 5;
+
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -52,7 +55,8 @@ namespace RentalKendaraan_20180140085.Controllers
 
             ViewData["CurrentFile"] = searchString;
 
-            return View(await rentKendaraanContext.ToListAsync());
+            return View(await PaginatedList<Peminjaman>.CreateAsync(menu.AsNoTracking(), pageNumber ?? 1, pageSize));
+
         }
 
         // GET: Peminjamen/Details/5
