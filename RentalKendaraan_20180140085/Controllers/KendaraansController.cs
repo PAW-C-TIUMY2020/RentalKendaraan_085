@@ -22,7 +22,7 @@ namespace RentalKendaraan_20180140085.Controllers
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
             var rentKendaraanContext = _context.Kendaraan.Include(k => k.IdJenisKendaraanNavigation);
-            
+          
             //buat list menyimpan ketersediaan
             var ktsdList = new List<String>();
 
@@ -36,6 +36,12 @@ namespace RentalKendaraan_20180140085.Controllers
 
             //panggil db context
             var menu = from m in _context.Kendaraan.Include(k => k.IdJenisKendaraanNavigation) select m;
+
+            //untuk search data
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NoPolisi.Contains(searchString) || s.NamaKendaraan.Contains(searchString) || s.NoStnk.Contains(searchString));
+            }
 
             //untuk memilih dropdownlist ketersediaan
             if (!string.IsNullOrEmpty(ktsd))
