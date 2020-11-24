@@ -36,5 +36,6 @@ namespace RentalKendaraan_20180140085.Models
         public Customer IdPeminjamanNavigation { get; set; }
         public ICollection<Pengembalian> Pengembalian { get; set; }
         public int? IdPeminjaman { get; internal set; }
+        public object IdCustomerNavigation { get; internal set; }
     }
 }

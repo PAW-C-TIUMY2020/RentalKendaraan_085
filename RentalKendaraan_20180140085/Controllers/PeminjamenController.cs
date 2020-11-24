@@ -19,9 +19,24 @@ namespace RentalKendaraan_20180140085.Controllers
         }
 
         // GET: Peminjamen
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string currentFilter, int? pageNumber)
         {
             var rentKendaraanContext = _context.Peminjaman.Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation).Include(p => p.IdPeminjamanNavigation);
+
+            //buat list menyimpan ketersediaan
+            var ktsdList = new List<string>();
+
+            //query mengambil data
+            var ktsdQuery = from d in _context.Peminjaman orderby d.IdKendaraanNavigation.NamaKendaraan select d.IdKendaraanNavigation.NamaKendaraan;
+
+            ktsdList.AddRange(ktsdQuery.Distinct());
+
+            //untuk menampilkan di view
+            ViewBag.ktsd = new SelectList(ktsdList);
+
+            //panggil db context
+            var menu = from m in _context.Peminjaman.Include(p => p.IdCustomerNavigation).Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation) select m;
+
             return View(await rentKendaraanContext.ToListAsync());
         }
 
