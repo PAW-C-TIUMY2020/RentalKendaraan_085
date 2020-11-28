@@ -19,7 +19,7 @@ namespace RentalKendaraan_20180140085.Controllers
         }
 
         // GET: Peminjamen
-        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Index(string ktsd, string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             //var rentKendaraanContext = _context.Peminjaman.Include(p => p.IdJaminanNavigation).Include(p => p.IdKendaraanNavigation).Include(p => p.IdPeminjamanNavigation);
 
